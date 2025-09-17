@@ -131,6 +131,16 @@ generate_file_packages <<- function(mail_merge_path,
       full_dsf_path <- paste0(full_dsf_path, ".pdf")
     }
 
+    if(df_lab$language_preference == "fr") {
+      data_submission_instructions_path <- gsub(".pdf", "", data_submission_instructions_path)
+      data_submission_instructions_path <- gsub("_FR", "", data_submission_instructions_path)
+      data_submission_instructions_path <- paste0(data_submission_instructions_path, "_FR.pdf")
+    } else {
+      data_submission_instructions_path <- gsub(".pdf", "", data_submission_instructions_path)
+      data_submission_instructions_path <- gsub("_FR", "", data_submission_instructions_path)
+      data_submission_instructions_path <- paste0(data_submission_instructions_path, ".pdf")
+    }
+
     pdf_subset(full_dsf_path,
                pages = page_num, output = "tmp/subset_dsf_temp.pdf")
 
